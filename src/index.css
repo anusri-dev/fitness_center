@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Sora', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ---- Scroll reveal ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Stagger children ---- */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal-stagger.reveal-visible > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-stagger.reveal-visible > *:nth-child(1) { transition-delay: 0.05s; }
+.reveal-stagger.reveal-visible > *:nth-child(2) { transition-delay: 0.15s; }
+.reveal-stagger.reveal-visible > *:nth-child(3) { transition-delay: 0.25s; }
+.reveal-stagger.reveal-visible > *:nth-child(4) { transition-delay: 0.35s; }
+.reveal-stagger.reveal-visible > *:nth-child(5) { transition-delay: 0.45s; }
+.reveal-stagger.reveal-visible > *:nth-child(6) { transition-delay: 0.55s; }
+.reveal-stagger.reveal-visible > *:nth-child(7) { transition-delay: 0.65s; }
+.reveal-stagger.reveal-visible > *:nth-child(8) { transition-delay: 0.75s; }
+
+/* ---- Shimmer text ---- */
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #166534 0%,
+    #22c55e 25%,
+    #86efac 50%,
+    #22c55e 75%,
+    #166534 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* ---- Glass card ---- */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* ---- Custom scrollbar ---- */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f0fdf4;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #22c55e, #15803d);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #16a34a, #14532d);
+}
+
+/* ---- Text selection ---- */
+::selection {
+  background: #22c55e;
+  color: white;
+}
